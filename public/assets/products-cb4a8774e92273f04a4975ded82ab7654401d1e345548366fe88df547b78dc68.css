@@ -1,0 +1,57 @@
+/* line 5, app/assets/stylesheets/products.scss */
+.products table {
+  border-collapse: collapse;
+}
+
+/* line 9, app/assets/stylesheets/products.scss */
+.products table tr td {
+  padding: 4px;
+  vertical-align: top;
+}
+
+/* line 14, app/assets/stylesheets/products.scss */
+.products .list_image {
+  width: 95px;
+  height: 100px;
+}
+
+/* line 19, app/assets/stylesheets/products.scss */
+.products .list_description {
+  width: 85%;
+}
+
+/* line 22, app/assets/stylesheets/products.scss */
+.products .list_description dl {
+  margin: 0;
+}
+
+/* line 26, app/assets/stylesheets/products.scss */
+.products .list_description dt {
+  color: #7a63cf;
+  font-weight: bold;
+  font-size: large;
+}
+
+/* line 32, app/assets/stylesheets/products.scss */
+.products .list_description dd {
+  margin: 0;
+}
+
+/* line 37, app/assets/stylesheets/products.scss */
+.products .list_actions {
+  font-size: small;
+  text-align: right;
+  padding-left: 1.2em;
+}
+
+/* line 43, app/assets/stylesheets/products.scss */
+.products .list_line_even {
+  background: #b6b3b3;
+}
+
+/* line 47, app/assets/stylesheets/products.scss */
+.products .list_line_odd {
+  background: #5451a7;
+}
+
+/* END_HIGHLIGHT */

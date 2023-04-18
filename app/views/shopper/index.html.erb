@@ -1,0 +1,134 @@
+<div class="shopper">
+  <div id='columns'>
+    <div id='side' >
+        <h1>Your shopping cart</h1>
+      <div id='cart'>
+
+        <table>
+
+          <tbody>
+            <% total1 = 0 %>
+            <% @userCart.each do |cartItem| %>
+
+              <tr>
+                <%= form_with(model: @shopper) do |form| %>
+
+                <td><%= cartItem.quantity %></td>
+                <%= form.hidden_field :cartItemQuantity, value: cartItem.quantity %>
+
+                  <td><%= cartItem.productName %></td>
+                  <%= form.hidden_field :cartItemProductName, value: cartItem.productName %>
+
+
+                  <td><%= cartItem.cost %></td>
+                  <%= form.hidden_field :cartItemCost, value: cartItem.cost %>
+
+                <% end %>
+
+              </tr>
+               <% total1 = total1 + cartItem.cost%>
+
+            <% end %>
+
+            <td colspan="3"> Total Amount = <%=  total1 %></td>
+          </tbody>
+
+        </table>
+
+        <% if @userCart.count != 0 %>
+
+          <%= form_with(model: @shopper) do |form| %>
+            <%= form.submit :"Review Cart", name: "reviewCart", value: "Review Cart" %>
+          <% end %>
+          <br>
+          <%= form_with(model: @shopper) do |form| %>
+            <%= form.submit :"Review Cart", name: "emptyCart", value: "Empty Cart" %>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+    <div id='main' >
+
+        <%= notice %>
+        <br>
+        <a href="http://localhost:3000/shopper/logout">Logout</a>
+        <br>
+        <br>
+        <%= form_with(model: @shopper) do |form| %>
+          <%= form.text_field :searchField %>
+          <%= form.submit :"Search", name: "search", value: "Search" %>
+        <% end %>
+        <br>
+
+
+          <h1>Product Catalog</h1>
+
+          <table border="1">
+
+            <tbody>
+              <% @products.each do |product| %>
+                <tr onclick="window.location='/shopper/index'">
+                  <%= form_with(model: @shopper) do |form| %>
+                  <div style="border-bottom: 1px solid #000;">
+                    <br>
+                    <%= image_tag url_for(product.image), size:"130" %>
+                    <h3><%= product.name %></h3>
+                    <%= form.hidden_field :productName, value: product.name %>
+                    <%= product.description %><br><br>
+                    <%= product.price %><br><br>
+                    <%= form.hidden_field :cost, value: product.price %>
+                    <div class="actions" >
+                      <%= form.submit :"Add to Cart"%>
+                    </div>
+                    <br>
+                    </div>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+    </div>
+
+    <!-- <div>
+      <% if @orders.count != 0 %>
+
+        <h1>Your past orders</h1>
+
+        <% @orderIds.each do |id| %>
+          <table>
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @orders.each do |order| %>
+                <% if order.orderid == id %>
+                  <tr>
+                    <%= form_with(model: @shopper) do |form| %>
+
+                      <td><%= order.productName %></td>
+                      <td><%= order.quantity %></td>
+                      <td><%= order.price %></td>
+
+                    <% end %>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+
+      <% end %>
+      </div> -->
+
+  </div>
+</div>
